@@ -1,0 +1,52 @@
+<html>
+  <head>   
+    <title>Jimmy's AngularJS Examples</title>
+	<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  </head>
+  
+  <body>
+  	<a href="/AngularJSExample"><< Return</a>
+    <h2>Custom Directive Example</h2>
+    <div ng-app="customdir">
+    	<p><custom-element-directive-demo></custom-element-directive-demo></p>
+    	<p><div custom-attribute-directive-demo></div></p>
+    	<p><div class="custom-class-directive-demo"></div></p>
+    	<p><!-- directive:custom-comment-directive-demo --></p>
+    </div>
+    
+    <script>
+    var dirApp = angular.module("customdir",[]);
+
+    dirApp.directive("customElementDirectiveDemo", function(){
+        return {
+        	restrict : "E",
+        	link: function(scope, element, attrs) {
+            	console.log('Hello World');
+                console.log('scope=' + scope);
+                console.log('element=' + element);
+                //console.log('attrs=' + attrs;)
+            },
+            template: "<div>Custom Directive rendered by custom HTML Element</div>"};
+        });
+
+    dirApp.directive("customAttributeDirectiveDemo", function(){
+        return {
+        	restrict : "A",
+            template: "<div>Custom Directive rendered by custom attribute of a DIV tag</div>"};
+        });
+
+    dirApp.directive("customClassDirectiveDemo", function(){
+        return {
+        	restrict : "C",
+            template: "<div>Custom Directive rendered by class attribute of a DIV tag</div>"};
+        });
+
+    dirApp.directive("customCommentDirectiveDemo", function(){
+        console.log("Comment!!");
+        return {
+        	restrict : "M",
+            template: "test message"};
+        });
+    </script>
+  </body>
+</html>

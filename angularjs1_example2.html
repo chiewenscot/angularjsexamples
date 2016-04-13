@@ -1,0 +1,32 @@
+<html>
+  <head>   
+    <title>Jimmy's AngularJS Examples</title>
+	<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  </head>
+  
+  <body>
+  	<a href="/AngularJSExample"><< Return</a>
+    <h2>Model-View using AngularJS Controller Example</h2>
+    <div ng-app="firstApp" ng-controller="personController">
+   		<p>First Name: <input type="text" ng-model="person.firstname"></p>
+    	<p>Last Name: <input type="text" ng-model="person.lastname"></p>
+    	<p>Your full name is: {{person.fullname()}}</p>
+    </div>
+    
+    <script>
+    var firstApp = angular.module("firstApp",[]);
+    
+    firstApp.controller('personController', function($scope){
+    	$scope.person = {
+    	firstname: "Jimmy",
+    	lastname: "Tai",
+    	fullname: function(){
+    	var my;
+    	my = $scope.person;
+    	return my.firstname + " " + my.lastname;
+    	}
+    	};
+    });
+    </script>
+  </body>
+</html>
